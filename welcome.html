@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olive's Orbit | NASA Stardance Welcome</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scene">
+    <div class="nebula"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="star-field"></div>
+    <div class="star-field star-field-2"></div>
+    <div class="frame">
+      <header class="hero-copy">
+        <p class="eyebrow">NASA Stardance Hack Club</p>
+        <h1>Welcome to Olive's Orbit</h1>
+        <p class="subtext">A cosmic clubhouse where curious minds rally and pickleball meets the stars.</p>
+      </header>
+
+      <section class="card" id="welcome-card">
+        <div class="introduction">
+          <p class="section-label">Your mission starts here</p>
+          <h2 id="greeting">Hello, cosmic explorer.</h2>
+          <p id="welcome-copy">Tell me your name and I’ll tailor the adventure just for you—complete with stellar serves and curious discoveries.</p>
+        </div>
+
+        <form id="name-form" class="name-form">
+          <label for="username">What should I call you?</label>
+          <input type="text" id="username" name="username" placeholder="e.g. Nova, Parker, Sam" autocomplete="name" />
+          <button type="submit">Launch the greeting</button>
+        </form>
+
+        <div class="action-grid">
+          <button class="action-button" id="explore-button">Explore the court</button>
+          <button class="action-button" id="spark-button">Spark a new idea</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="pickleball-orbit">
+      <div class="pickleball"></div>
+      <div class="orbit-ring"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

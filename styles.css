@@ -1,0 +1,275 @@
+:root {
+  color-scheme: dark;
+  --bg: #040b1c;
+  --bg-soft: #0b172f;
+  --panel: rgba(18, 31, 57, 0.94);
+  --accent: #8ef8ff;
+  --accent-2: #f3d96f;
+  --text: #edf3ff;
+  --muted: #8ca5c5;
+  --highlight: #7fffd4;
+  --shadow: rgba(22, 44, 90, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 10%, rgba(143, 232, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 80% 20%, rgba(243, 210, 112, 0.12), transparent 16%),
+    linear-gradient(180deg, #09101f 0%, #050716 35%, #02030a 100%);
+  background-attachment: fixed;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.scene {
+  position: relative;
+  width: min(1100px, 100%);
+  padding: 40px;
+}
+
+.nebula,
+.nebula-2,
+.star-field,
+.star-field-2,
+.pickleball-orbit {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nebula {
+  background: radial-gradient(circle at 40% 20%, rgba(142, 248, 255, 0.18), transparent 25%),
+    radial-gradient(circle at 72% 40%, rgba(243, 217, 111, 0.14), transparent 22%);
+  filter: blur(36px);
+}
+
+.nebula-2 {
+  background: radial-gradient(circle at 20% 70%, rgba(126, 212, 255, 0.1), transparent 28%),
+    radial-gradient(circle at 80% 80%, rgba(255, 171, 93, 0.08), transparent 24%);
+  filter: blur(40px);
+}
+
+.star-field,
+.star-field-2 {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.96) 0.7px, transparent 0px);
+  background-size: 24px 24px;
+}
+
+.star-field-2 {
+  opacity: 0.42;
+  background-size: 32px 32px;
+}
+
+.pearl-mist {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 35% 30%, rgba(118, 211, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 65% 58%, rgba(243, 178, 133, 0.08), transparent 18%),
+    radial-gradient(circle at 45% 80%, rgba(148, 111, 255, 0.08), transparent 16%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.frame {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.25);
+  padding: 42px;
+  overflow: hidden;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--highlight);
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3rem, 4vw, 4.8rem);
+  line-height: 0.95;
+}
+
+.subtext {
+  margin: 20px 0 0;
+  max-width: 640px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: rgba(4, 11, 28, 0.95);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 32px;
+  display: grid;
+  gap: 28px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+}
+
+.section-label {
+  margin: 0 0 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(2rem, 2.6vw, 3.2rem);
+  line-height: 1.05;
+}
+
+#name-form {
+  display: grid;
+  gap: 14px;
+}
+
+label {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+input {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(15, 27, 54, 0.9);
+  color: var(--text);
+  padding: 0 18px;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+button {
+  min-height: 52px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #7fffd4 0%, #73d1ff 100%);
+  color: #08101c;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.action-button {
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.action-button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.pickleball-orbit {
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform-origin: center center;
+  animation: orbit 14s linear infinite;
+}
+
+.pickleball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #f9f7d6, #e8d96d 12%, #e2c25a 40%, #c8a54b 55%, #9c7b2f 100%);
+  box-shadow: inset 0 18px 42px rgba(0,0,0,0.18), 0 0 80px rgba(126, 212, 255, 0.15);
+  transform: translate(-50%, -50%) translateX(210px);
+}
+
+.pickleball::before,
+.pickleball::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+}
+
+.pickleball::before {
+  inset: 16px 24px;
+}
+
+.pickleball::after {
+  width: 26px;
+  height: 26px;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 16px rgba(255,255,255,0.12);
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 420px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed rgba(155, 215, 255, 0.35);
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 780px) {
+  .frame {
+    padding: 28px;
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}
