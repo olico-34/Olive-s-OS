@@ -1,0 +1,1152 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+#bsb-root {
+  --paper: #F1E8D2;
+  --paper-dark: #E2D3AC;
+  --paper-darker: #D4C295;
+  --ink: #23301C;
+  --ink-soft: #4B5940;
+  --navy: #1F3A5F;
+  --navy-dark: #16283F;
+  --brass: #A9822F;
+  --red-stamp: #A13D2B;
+  --line: rgba(35,48,28,0.18);
+  --shadow: 0 8px 24px rgba(35,48,28,0.18);
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: var(--ink);
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,0.25), transparent 40%),
+    repeating-linear-gradient(0deg, transparent, transparent 27px, var(--line) 28px);
+  min-height: 100%;
+  padding: 0;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+#bsb-root * { box-sizing: border-box; }
+
+.bsb-stamp-font { font-family: 'Special Elite', 'Courier New', monospace; letter-spacing: 0.03em; }
+.bsb-mono { font-family: 'IBM Plex Mono', monospace; }
+
+.bsb-shell { max-width: 980px; margin: 0 auto; padding: 28px 22px 60px; }
+
+/* ---------- Header / letterhead ---------- */
+.bsb-letterhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 3px double var(--ink);
+  padding-bottom: 14px;
+  margin-bottom: 26px;
+}
+.bsb-letterhead h1 {
+  font-family: 'Special Elite', monospace;
+  font-size: 22px;
+  margin: 0;
+  color: var(--navy-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.bsb-letterhead .bsb-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Folder tabs (dashboard) ---------- */
+.bsb-tabrow { display: flex; gap: 4px; margin-bottom: -1px; flex-wrap: wrap; }
+.bsb-tab {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--paper-dark);
+  border: 1px solid var(--line);
+  border-bottom: none;
+  padding: 8px 16px 10px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.bsb-tab.active { background: var(--paper); color: var(--ink); font-weight: 600; }
+.bsb-tab:hover { background: var(--paper); }
+
+.bsb-folder-body {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 0 10px 10px 10px;
+  box-shadow: var(--shadow);
+  padding: 26px;
+}
+
+/* ---------- Section / index card ---------- */
+.bsb-card {
+  background: rgba(255,255,255,0.35);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.bsb-card::before {
+  content: '';
+  position: absolute;
+  top: -6px; left: 22px;
+  width: 26px; height: 12px;
+  background: rgba(169,130,47,0.55);
+  border-radius: 2px;
+  transform: rotate(-3deg);
+}
+.bsb-card h3 {
+  font-family: 'Special Elite', monospace;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--navy-dark);
+  margin: 4px 0 14px;
+}
+
+.bsb-field { margin-bottom: 14px; }
+.bsb-field label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin-bottom: 5px;
+}
+.bsb-field input, .bsb-field textarea, .bsb-field select {
+  width: 100%;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 15px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #FBF7EC;
+  color: var(--ink);
+}
+.bsb-field textarea { min-height: 90px; resize: vertical; line-height: 1.5; }
+.bsb-field input:focus, .bsb-field textarea:focus, .bsb-field select:focus {
+  outline: 2px solid var(--navy);
+  outline-offset: 1px;
+}
+.bsb-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.bsb-grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media (max-width: 640px) { .bsb-grid2, .bsb-grid3 { grid-template-columns: 1fr; } }
+
+/* ---------- Buttons ---------- */
+.bsb-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 9px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--paper);
+  cursor: pointer;
+  transition: transform 0.06s ease;
+}
+.bsb-btn:hover { background: var(--navy-dark); }
+.bsb-btn:active { transform: scale(0.97); }
+.bsb-btn.ghost { background: transparent; color: var(--navy); }
+.bsb-btn.ghost:hover { background: rgba(31,58,95,0.08); }
+.bsb-btn.small { font-size: 10.5px; padding: 6px 10px; }
+.bsb-btn:disabled { opacity: 0.5; cursor: default; }
+
+.bsb-stamp-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--red-stamp);
+  background: transparent;
+  border: 3px solid var(--red-stamp);
+  border-radius: 6px;
+  padding: 12px 22px;
+  cursor: pointer;
+  transform: rotate(-1.5deg);
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.bsb-stamp-btn:hover { background: rgba(161,61,43,0.08); }
+.bsb-stamp-btn:active { transform: rotate(-1.5deg) scale(0.95); background: rgba(161,61,43,0.15); }
+
+/* ---------- AI assist panel ---------- */
+.bsb-ai-row { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+.bsb-ai-panel {
+  margin-top: 10px;
+  background: #FCF6E3;
+  border: 1px dashed var(--brass);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 14.5px;
+  white-space: pre-wrap;
+  color: var(--ink);
+}
+.bsb-ai-panel .bsb-ai-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brass);
+  display: block;
+  margin-bottom: 6px;
+}
+.bsb-loading { color: var(--ink-soft); font-style: italic; }
+
+/* ---------- Dashboard folders ---------- */
+.bsb-folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 16px; margin-top: 8px; }
+.bsb-case-folder {
+  background: var(--paper-dark);
+  border: 1px solid var(--line);
+  border-radius: 4px 10px 6px 6px;
+  padding: 16px 14px 14px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 3px 8px rgba(35,48,28,0.12);
+  transition: transform 0.08s ease;
+}
+.bsb-case-folder:hover { transform: translateY(-3px); }
+.bsb-case-folder::before {
+  content: '';
+  position: absolute;
+  top: -9px; left: 14px;
+  width: 60px; height: 14px;
+  background: var(--paper-dark);
+  border: 1px solid var(--line);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+.bsb-case-folder .bsb-case-name {
+  font-family: 'Special Elite', monospace;
+  font-size: 14px;
+  color: var(--navy-dark);
+  margin-bottom: 4px;
+}
+.bsb-case-sub { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-soft); }
+.bsb-badge {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+.bsb-badge.draft { background: rgba(169,130,47,0.2); color: var(--brass); }
+.bsb-badge.ready { background: rgba(31,58,95,0.15); color: var(--navy); }
+.bsb-new-folder {
+  border: 2px dashed var(--brass);
+  background: transparent;
+  border-radius: 4px 10px 6px 6px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 84px;
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  color: var(--brass);
+  cursor: pointer;
+}
+.bsb-new-folder:hover { background: rgba(169,130,47,0.08); }
+
+/* ---------- Trait chips ---------- */
+.bsb-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.bsb-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  padding: 7px 13px;
+  border-radius: 16px;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+  cursor: pointer;
+}
+.bsb-chip.selected { background: var(--navy); color: var(--paper); }
+
+.bsb-topnav { display:flex; justify-content: space-between; align-items:center; margin-bottom: 18px; }
+.bsb-back { font-family:'IBM Plex Mono',monospace; font-size:12px; color: var(--navy); cursor:pointer; text-transform: uppercase; letter-spacing:0.05em; }
+.bsb-back:hover { text-decoration: underline; }
+
+/* ---------- Review / final document ---------- */
+.bsb-doc {
+  background: #FFFDF6;
+  border: 1px solid var(--line);
+  padding: 34px;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  font-size: 15px;
+  line-height: 1.65;
+}
+.bsb-doc h2 { font-family: 'Special Elite', monospace; font-size: 19px; color: var(--navy-dark); border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-top: 26px; }
+.bsb-doc h2:first-child { margin-top: 0; }
+.bsb-doc .bsb-doc-name { font-size: 24px; font-weight: 700; }
+.bsb-doc ul { margin: 6px 0; padding-left: 22px; }
+.bsb-doc-actions { display:flex; gap:10px; margin-top: 18px; flex-wrap: wrap; }
+#bsb-doc-content:focus { outline: 2px solid var(--navy); border-style: solid; }
+
+.bsb-empty { color: var(--ink-soft); font-style: italic; padding: 20px 0; }
+.bsb-toast {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: var(--navy); color: var(--paper); font-family:'IBM Plex Mono',monospace;
+  font-size: 12px; padding: 10px 18px; border-radius: 4px; box-shadow: var(--shadow); z-index: 50;
+}
+</style>
+
+<div id="bsb-root">
+  <div class="bsb-shell">
+    <div class="bsb-letterhead">
+      <h1>The Brag Sheet Office</h1>
+      <div class="bsb-sub">Student Record &amp; Recommendation Files</div>
+    </div>
+    <div id="bsb-app"><div class="bsb-empty bsb-stamp-font">Unlocking the filing cabinet…</div></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const app = document.getElementById('bsb-app');
+  let state = {
+    view: 'loading',
+    profile: null,
+    casesIndex: [],
+    activeCase: null,
+    activeCaseId: null,
+    profileDraft: null
+  };
+
+  const TRAITS = ["Leadership","Curiosity","Resilience","Collaboration","Creativity","Work Ethic","Kindness","Initiative","Integrity","Humor","Critical Thinking","Empathy","Adaptability","Communication"];
+
+  function uid(){ return 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+  function esc(str){
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function toast(msg){
+    const t = document.createElement('div');
+    t.className = 'bsb-toast';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(), 2200);
+  }
+
+  async function loadAll(){
+    try {
+      const p = await window.storage.get('student-profile');
+      state.profile = p ? JSON.parse(p.value) : null;
+    } catch(e) { state.profile = null; }
+    try {
+      const idx = await window.storage.get('cases-index');
+      state.casesIndex = idx ? JSON.parse(idx.value) : [];
+    } catch(e) { state.casesIndex = []; }
+    state.view = 'dashboard';
+    render();
+  }
+
+  async function saveProfile(profile){
+    profile.updatedAt = new Date().toISOString();
+    await window.storage.set('student-profile', JSON.stringify(profile));
+    state.profile = profile;
+  }
+
+  async function saveCasesIndex(){
+    await window.storage.set('cases-index', JSON.stringify(state.casesIndex));
+  }
+
+  async function saveCase(c){
+    c.updatedAt = new Date().toISOString();
+    await window.storage.set('case:' + c.id, JSON.stringify(c));
+    const idxEntry = state.casesIndex.find(x=>x.id===c.id);
+    if (idxEntry) {
+      idxEntry.recommenderName = c.recommenderName;
+      idxEntry.subject = c.subject;
+      idxEntry.status = caseStatus(c);
+    }
+    await saveCasesIndex();
+  }
+
+  async function loadCase(id){
+    try {
+      const r = await window.storage.get('case:' + id);
+      return r ? JSON.parse(r.value) : null;
+    } catch(e) {
+      return null;
+    }
+  }
+
+  function caseStatus(c){
+    const hasTraits = c.traits && c.traits.some(t=>t.note && t.note.trim().length>0);
+    const hasMemories = c.memories && c.memories.some(m=>m.response && m.response.trim().length>0);
+    return (hasTraits && hasMemories) ? 'ready' : 'draft';
+  }
+
+  async function askClaude(systemPrompt, userPrompt, btn){
+    if (btn) { btn.disabled = true; }
+    try {
+      const resp = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-6",
+          max_tokens: 1000,
+          system: systemPrompt,
+          messages: [{ role: "user", content: userPrompt }]
+        })
+      });
+      const data = await resp.json();
+      const text = (data.content || []).filter(b=>b.type==='text').map(b=>b.text).join('\n').trim();
+      return text || "Sorry, I couldn't generate that just now.";
+    } catch(e) {
+      return "Something went wrong reaching the AI assistant. Try again in a moment.";
+    } finally {
+      if (btn) { btn.disabled = false; }
+    }
+  }
+
+  function el(html){
+    const t = document.createElement('template');
+    t.innerHTML = html.trim();
+    return t.content.firstElementChild;
+  }
+
+  function render(){
+    app.innerHTML = '';
+    try {
+      if (state.view === 'dashboard') return renderDashboard();
+      if (state.view === 'profile') return renderProfile();
+      if (state.view === 'case') return renderCase();
+      if (state.view === 'review') return renderReview();
+    } catch(e) {
+      app.innerHTML = '';
+      const errBox = el(`<div class="bsb-card">
+        <h3>Something Went Wrong</h3>
+        <p>The app hit an error while rendering this screen: <span class="bsb-mono">${esc(e && e.message ? e.message : String(e))}</span></p>
+        <p class="bsb-case-sub">Your saved data is safe. Try going back to the Filing Cabinet.</p>
+      </div>`);
+      app.appendChild(errBox);
+      const backBtn = el(`<button class="bsb-btn">← Filing Cabinet</button>`);
+      backBtn.addEventListener('click', ()=>{ state.view='dashboard'; render(); });
+      app.appendChild(backBtn);
+    }
+  }
+
+  /* ---------------- DASHBOARD ---------------- */
+  function renderDashboard(){
+    const hasProfile = !!state.profile;
+    const wrap = el(`<div>
+      <div class="bsb-tabrow">
+        <div class="bsb-tab active">Filing Cabinet</div>
+      </div>
+      <div class="bsb-folder-body">
+        <div class="bsb-card">
+          <h3>Student File</h3>
+          ${hasProfile ? `
+            <p><strong>${state.profile.name || 'Unnamed'}</strong> · Class of ${state.profile.gradYear || '—'} · ${state.profile.school || '—'}</p>
+            <p class="bsb-case-sub bsb-mono">GPA (W) ${state.profile.gpaWeighted || '—'} · GPA (U) ${state.profile.gpaUnweighted || '—'} &nbsp;|&nbsp; ${(state.profile.deadlines||[]).length} deadline${(state.profile.deadlines||[]).length===1?'':'s'} on file</p>
+          ` : `<p class="bsb-empty">You haven't filled out your Student File yet. Fill it out once — it'll auto-fill every future brag sheet.</p>`}
+          <button class="bsb-btn" id="bsb-edit-profile">${hasProfile ? 'Edit Student File' : 'Fill Out Student File'}</button>
+        </div>
+
+        <div class="bsb-card">
+          <h3>Case Files — Letters &amp; Recommenders</h3>
+          <p class="bsb-case-sub">Each folder below is a brag sheet you're preparing for one specific person.</p>
+          <div class="bsb-folder-grid" id="bsb-folder-grid"></div>
+        </div>
+      </div>
+    </div>`);
+    app.appendChild(wrap);
+
+    const grid = wrap.querySelector('#bsb-folder-grid');
+    state.casesIndex.slice().sort((a,b)=> (b.updatedAt||'').localeCompare(a.updatedAt||'')).forEach(c=>{
+      const f = el(`<div class="bsb-case-folder">
+        <div class="bsb-case-name">${c.recommenderName || 'Untitled'}</div>
+        <div class="bsb-case-sub">${c.subject || 'No subject noted'}</div>
+        <span class="bsb-badge ${c.status==='ready'?'ready':'draft'}">${c.status==='ready'?'Ready to Send':'Draft'}</span>
+      </div>`);
+      f.addEventListener('click', ()=>openCase(c.id));
+      grid.appendChild(f);
+    });
+    const newFolder = el(`<div class="bsb-new-folder">+ New Case File</div>`);
+    newFolder.addEventListener('click', createCase);
+    grid.appendChild(newFolder);
+
+    wrap.querySelector('#bsb-edit-profile').addEventListener('click', ()=>{
+      state.profileDraft = state.profile ? JSON.parse(JSON.stringify(state.profile)) : {activities:[], deadlines:[], honors:[], challenges:[]};
+      if (!state.profileDraft.activities) state.profileDraft.activities = [];
+      if (!state.profileDraft.deadlines) state.profileDraft.deadlines = [];
+      if (!state.profileDraft.honors) state.profileDraft.honors = [];
+      if (!state.profileDraft.challenges) state.profileDraft.challenges = [];
+      state.view = 'profile';
+      render();
+    });
+  }
+
+  async function createCase(){
+    if (!state.profile) {
+      toast("Fill out your Student File first — it only takes a minute.");
+      state.profileDraft = {activities:[], deadlines:[], honors:[], challenges:[]};
+      state.view = 'profile';
+      render();
+      return;
+    }
+    const c = { id: uid(), recommenderName: '', subject: '', relationship: 'Teacher', traits: [], memories: [
+      { prompt: "Describe a specific moment or story from this class/context that shows who you are.", response: "" },
+      { prompt: "What's something about you this person might not already know, that would help them write about you?", response: "" }
+    ], updatedAt: new Date().toISOString() };
+    state.casesIndex.push({ id: c.id, recommenderName: '(untitled)', subject: '', status: 'draft', updatedAt: c.updatedAt });
+    await saveCasesIndex();
+    await saveCase(c);
+    openCase(c.id);
+  }
+
+  async function openCase(id){
+    const c = await loadCase(id);
+    if (!c) {
+      toast("Couldn't find that case file — it may not have saved correctly. Removing it from the list.");
+      state.casesIndex = state.casesIndex.filter(x=>x.id!==id);
+      await saveCasesIndex();
+      state.view = 'dashboard';
+      render();
+      return;
+    }
+    if (!c.traits) c.traits = [];
+    if (!c.memories) c.memories = [];
+    state.activeCase = c;
+    state.activeCaseId = id;
+    state.view = 'case';
+    render();
+  }
+
+  /* ---------------- PROFILE (Basics / Academics / Activities) ---------------- */
+  function renderProfile(){
+    const d = state.profileDraft;
+    const wrap = el(`<div>
+      <div class="bsb-topnav">
+        <div class="bsb-back" id="bsb-back">← Filing Cabinet</div>
+      </div>
+      <div class="bsb-tabrow">
+        <div class="bsb-tab active">Student File</div>
+      </div>
+      <div class="bsb-folder-body">
+
+        <div class="bsb-card">
+          <h3>Basics</h3>
+          <div class="bsb-grid2">
+            <div class="bsb-field"><label>Full Name</label><input id="f-name" value="${esc(d.name||'')}"></div>
+            <div class="bsb-field"><label>Graduation Year</label><input id="f-gradYear" value="${esc(d.gradYear||'')}"></div>
+          </div>
+          <div class="bsb-grid2">
+            <div class="bsb-field"><label>School</label><input id="f-school" value="${esc(d.school||'')}"></div>
+            <div class="bsb-field"><label>Email</label><input id="f-email" value="${esc(d.email||'')}"></div>
+          </div>
+        </div>
+
+        <div class="bsb-card">
+          <h3>Academics</h3>
+          <div class="bsb-grid3">
+            <div class="bsb-field"><label>GPA (Unweighted)</label><input id="f-gpaU" value="${esc(d.gpaUnweighted||'')}"></div>
+            <div class="bsb-field"><label>GPA (Weighted)</label><input id="f-gpaW" value="${esc(d.gpaWeighted||'')}"></div>
+            <div class="bsb-field"><label>Intended Major(s)</label><input id="f-major" value="${esc(d.major||'')}"></div>
+          </div>
+          <div class="bsb-grid2">
+            <div class="bsb-field"><label>SAT Score</label><input id="f-sat" value="${esc(d.satScore||'')}"></div>
+            <div class="bsb-field"><label>ACT Score</label><input id="f-act" value="${esc(d.actScore||'')}"></div>
+          </div>
+        </div>
+
+        <div class="bsb-card">
+          <h3>Application Deadlines</h3>
+          <p class="bsb-case-sub">Add one row per college — each can have its own deadline type and date.</p>
+          <div id="f-deadlines"></div>
+          <button class="bsb-btn ghost small" id="f-add-deadline">+ Add Deadline</button>
+        </div>
+
+        <div class="bsb-card">
+          <h3>Activities &amp; Involvement</h3>
+          <div id="f-activities"></div>
+          <button class="bsb-btn ghost small" id="f-add-activity">+ Add Activity</button>
+        </div>
+
+        <div class="bsb-card">
+          <h3>Honors, Recognitions &amp; Certificates</h3>
+          <p class="bsb-case-sub">Awards, honor rolls, certifications — anything you've earned.</p>
+          <div id="f-honors"></div>
+          <button class="bsb-btn ghost small" id="f-add-honor">+ Add Honor / Certificate</button>
+        </div>
+
+        <div class="bsb-card">
+          <h3>Obstacles &amp; Challenges</h3>
+          <p class="bsb-case-sub">Describe a challenge you've faced and how you handled it. Not sure where to start? Use the assistant below.</p>
+          <div id="f-challenges"></div>
+          <button class="bsb-btn ghost small" id="f-add-challenge">+ Add Challenge</button>
+        </div>
+
+        <button class="bsb-btn" id="f-save">Save Student File</button>
+      </div>
+    </div>`);
+    app.appendChild(wrap);
+
+    const ACTIVITY_TYPES = ["Work (Paid)","Sports","Volunteer","Research","Club","Arts","Music/Theater","Religious","School Publication","Leadership","Other"];
+    const DEADLINE_TYPES = ["Early Action","Early Decision","Regular Decision","Rolling","Priority","Other"];
+
+    const deadWrap = wrap.querySelector('#f-deadlines');
+    function renderDeadlines(){
+      deadWrap.innerHTML = '';
+      if (!d.deadlines) d.deadlines = [];
+      d.deadlines.forEach((dl, i)=>{
+        const row = el(`<div class="bsb-card" style="background:rgba(255,255,255,0.5)">
+          <div class="bsb-grid3">
+            <div class="bsb-field"><label>College</label><input class="dl-college" value="${esc(dl.college||'')}"></div>
+            <div class="bsb-field"><label>Deadline Type</label>
+              <select class="dl-type">${DEADLINE_TYPES.map(t=>`<option ${dl.type===t?'selected':''}>${t}</option>`).join('')}</select>
+            </div>
+            <div class="bsb-field"><label>Date</label><input class="dl-date" value="${esc(dl.date||'')}"></div>
+          </div>
+          <button class="bsb-btn ghost small dl-remove">Remove</button>
+        </div>`);
+        row.querySelector('.dl-college').addEventListener('input', e=> dl.college = e.target.value);
+        row.querySelector('.dl-type').addEventListener('change', e=> dl.type = e.target.value);
+        row.querySelector('.dl-date').addEventListener('input', e=> dl.date = e.target.value);
+        row.querySelector('.dl-remove').addEventListener('click', ()=>{ d.deadlines.splice(i,1); renderDeadlines(); });
+        deadWrap.appendChild(row);
+      });
+    }
+    renderDeadlines();
+    wrap.querySelector('#f-add-deadline').addEventListener('click', ()=>{
+      d.deadlines.push({college:'', type:DEADLINE_TYPES[0], date:''});
+      renderDeadlines();
+    });
+
+    const actWrap = wrap.querySelector('#f-activities');
+    function renderActivities(){
+      actWrap.innerHTML = '';
+      d.activities.forEach((a, i)=>{
+        const row = el(`<div class="bsb-card" style="background:rgba(255,255,255,0.5)">
+          <div class="bsb-grid3">
+            <div class="bsb-field"><label>Activity</label><input class="act-name" value="${esc(a.name||'')}"></div>
+            <div class="bsb-field"><label>Type</label>
+              <select class="act-type">${ACTIVITY_TYPES.map(t=>`<option ${a.type===t?'selected':''}>${t}</option>`).join('')}</select>
+            </div>
+            <div class="bsb-field"><label>Role/Position</label><input class="act-role" value="${esc(a.role||'')}"></div>
+          </div>
+          <div class="bsb-grid2">
+            <div class="bsb-field"><label>Years Involved</label><input class="act-years" value="${esc(a.years||'')}"></div>
+            <div class="bsb-field"><label>Hours per Week</label><input class="act-hours" value="${esc(a.hoursPerWeek||'')}"></div>
+          </div>
+          <div class="bsb-field"><label>Brief Description</label><textarea class="act-desc" style="min-height:56px">${esc(a.description||'')}</textarea>
+            <div class="bsb-ai-row">
+              <button class="bsb-btn small ghost act-feedback">Get Feedback</button>
+              <button class="bsb-btn small ghost act-enhance">Enhance</button>
+            </div>
+            <div class="bsb-ai-panel" style="display:none"></div>
+          </div>
+          <button class="bsb-btn ghost small act-remove">Remove</button>
+        </div>`);
+        row.querySelector('.act-name').addEventListener('input', e=> a.name = e.target.value);
+        row.querySelector('.act-type').addEventListener('change', e=> a.type = e.target.value);
+        row.querySelector('.act-role').addEventListener('input', e=> a.role = e.target.value);
+        row.querySelector('.act-years').addEventListener('input', e=> a.years = e.target.value);
+        row.querySelector('.act-hours').addEventListener('input', e=> a.hoursPerWeek = e.target.value);
+        const descTa = row.querySelector('.act-desc');
+        descTa.addEventListener('input', e=> a.description = e.target.value);
+        const panel = row.querySelector('.bsb-ai-panel');
+        row.querySelector('.act-feedback').addEventListener('click', async (e)=>{
+          panel.style.display = 'block';
+          panel.innerHTML = `<span class="bsb-ai-label">Assistant Feedback</span><span class="bsb-loading">Thinking…</span>`;
+          const text = await aiFeedback(descTa.value, `a Common-App-style activity description for "${a.name||'this activity'}" (${a.type||'activity'})`);
+          panel.innerHTML = `<span class="bsb-ai-label">Assistant Feedback</span>${text}`;
+        });
+        row.querySelector('.act-enhance').addEventListener('click', attachEnhance(panel,
+          () => aiEnhance(descTa.value, `Common-App-style activity description for "${a.name||'this activity'}" (${a.type||'activity'}, role: ${a.role||'not specified'})`, 500),
+          (text) => { descTa.value = text; a.description = text; }
+        ));
+        row.querySelector('.act-remove').addEventListener('click', ()=>{ d.activities.splice(i,1); renderActivities(); });
+        actWrap.appendChild(row);
+      });
+    }
+    renderActivities();
+    wrap.querySelector('#f-add-activity').addEventListener('click', ()=>{
+      d.activities.push({name:'',type:ACTIVITY_TYPES[0],role:'',years:'',description:''});
+      renderActivities();
+    });
+
+    const honorsWrap = wrap.querySelector('#f-honors');
+    function renderHonors(){
+      honorsWrap.innerHTML = '';
+      if (!d.honors) d.honors = [];
+      d.honors.forEach((h, i)=>{
+        const row = el(`<div class="bsb-card" style="background:rgba(255,255,255,0.5)">
+          <div class="bsb-field"><label>Name of Honor / Recognition / Certificate</label><input class="h-name" value="${esc(h.name||'')}"></div>
+          <div class="bsb-field"><label>Brief Description</label><textarea class="h-desc" style="min-height:56px">${esc(h.description||'')}</textarea>
+            <div class="bsb-ai-row">
+              <button class="bsb-btn small ghost h-feedback">Get Feedback</button>
+              <button class="bsb-btn small ghost h-enhance">Enhance</button>
+            </div>
+            <div class="bsb-ai-panel" style="display:none"></div>
+          </div>
+          <button class="bsb-btn ghost small h-remove">Remove</button>
+        </div>`);
+        row.querySelector('.h-name').addEventListener('input', e=> h.name = e.target.value);
+        const descTa = row.querySelector('.h-desc');
+        descTa.addEventListener('input', e=> h.description = e.target.value);
+        const panel = row.querySelector('.bsb-ai-panel');
+        row.querySelector('.h-feedback').addEventListener('click', async ()=>{
+          panel.style.display = 'block';
+          panel.innerHTML = `<span class="bsb-ai-label">Assistant Feedback</span><span class="bsb-loading">Thinking…</span>`;
+          const text = await aiFeedback(descTa.value, `a brief description of the honor/recognition/certificate "${h.name||'this honor'}" for a brag sheet`);
+          panel.innerHTML = `<span class="bsb-ai-label">Assistant Feedback</span>${text}`;
+        });
+        row.querySelector('.h-enhance').addEventListener('click', attachEnhance(panel,
+          () => aiEnhance(descTa.value, `description of the honor/recognition/certificate "${h.name||'this honor'}" for a brag sheet`, 500),
+          (text) => { descTa.value = text; h.description = text; }
+        ));
+        row.querySelector('.h-remove').addEventListener('click', ()=>{ d.honors.splice(i,1); renderHonors(); });
+        honorsWrap.appendChild(row);
+      });
+    }
+    renderHonors();
+    wrap.querySelector('#f-add-honor').addEventListener('click', ()=>{
+      d.honors.push({name:'', description:''});
+      renderHonors();
+    });
+
+    const challengesWrap = wrap.querySelector('#f-challenges');
+    function renderChallenges(){
+      challengesWrap.innerHTML = '';
+      if (!d.challenges) d.challenges = [];
+      d.challenges.forEach((ch, i)=>{
+        const row = el(`<div class="bsb-card" style="background:rgba(255,255,255,0.5)">
+          <div class="bsb-field"><label>Describe the challenge and how you handled it</label>
+            <textarea class="ch-desc" style="min-height:80px">${esc(ch.description||'')}</textarea>
+            <div class="bsb-ai-row">
+              <button class="bsb-btn small ghost ch-suggest">Get Ideas</button>
+              <button class="bsb-btn small ghost ch-example">See an Example</button>
+              <button class="bsb-btn small ghost ch-feedback">Get Feedback</button>
+              <button class="bsb-btn small ghost ch-enhance">Enhance</button>
+            </div>
+            <div class="bsb-ai-panel" style="display:none"></div>
+          </div>
+          <button class="bsb-btn ghost small ch-remove">Remove</button>
+        </div>`);
+        const descTa = row.querySelector('.ch-desc');
+        descTa.addEventListener('input', e=> ch.description = e.target.value);
+        const panel = row.querySelector('.bsb-ai-panel');
+        async function run(label, fn){
+          panel.style.display = 'block';
+          panel.innerHTML = `<span class="bsb-ai-label">${label}</span><span class="bsb-loading">Thinking…</span>`;
+          const text = await fn();
+          panel.innerHTML = `<span class="bsb-ai-label">${label}</span>${text}`;
+        }
+        row.querySelector('.ch-suggest').addEventListener('click', ()=> run('Ideas to get started', ()=>aiSuggestChallenge()));
+        row.querySelector('.ch-example').addEventListener('click', ()=> run('Example Response', ()=>aiExampleChallenge()));
+        row.querySelector('.ch-feedback').addEventListener('click', ()=> run('Assistant Feedback', ()=>aiFeedback(descTa.value, "a description of an obstacle or challenge the student faced and how they handled it, for a brag sheet")));
+        row.querySelector('.ch-enhance').addEventListener('click', attachEnhance(panel,
+          () => aiEnhance(descTa.value, "description of an obstacle or challenge the student faced and how they handled it, for a brag sheet"),
+          (text) => { descTa.value = text; ch.description = text; }
+        ));
+        row.querySelector('.ch-remove').addEventListener('click', ()=>{ d.challenges.splice(i,1); renderChallenges(); });
+        challengesWrap.appendChild(row);
+      });
+    }
+    renderChallenges();
+    wrap.querySelector('#f-add-challenge').addEventListener('click', ()=>{
+      d.challenges.push({description:''});
+      renderChallenges();
+    });
+
+    ['name','gradYear','school','email','gpaUnweighted','gpaWeighted','satScore','actScore','major'].forEach(key=>{
+      const map = {name:'f-name',gradYear:'f-gradYear',school:'f-school',email:'f-email',gpaUnweighted:'f-gpaU',gpaWeighted:'f-gpaW',satScore:'f-sat',actScore:'f-act',major:'f-major'};
+      wrap.querySelector('#'+map[key]).addEventListener('input', e=> d[key] = e.target.value);
+    });
+
+    wrap.querySelector('#f-save').addEventListener('click', async ()=>{
+      await saveProfile(d);
+      toast("Student File saved.");
+      state.view = 'dashboard';
+      render();
+    });
+    wrap.querySelector('#bsb-back').addEventListener('click', ()=>{ state.view='dashboard'; render(); });
+  }
+
+  /* ---------------- CASE (Traits & Memories) ---------------- */
+  function renderCase(){
+    const c = state.activeCase;
+    const wrap = el(`<div>
+      <div class="bsb-topnav">
+        <div class="bsb-back" id="bsb-back">← Filing Cabinet</div>
+      </div>
+      <div class="bsb-tabrow">
+        <div class="bsb-tab active">Case File</div>
+      </div>
+      <div class="bsb-folder-body">
+        <div class="bsb-card">
+          <h3>Who is this for?</h3>
+          <div class="bsb-grid3">
+            <div class="bsb-field"><label>Recommender's Name</label><input id="c-name" value="${esc(c.recommenderName||'')}"></div>
+            <div class="bsb-field"><label>Class / Context</label><input id="c-subject" value="${esc(c.subject||'')}"></div>
+            <div class="bsb-field"><label>Relationship</label>
+              <select id="c-relationship">
+                ${['Teacher','Counselor','Coach','Employer','Other'].map(r=>`<option ${c.relationship===r?'selected':''}>${r}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="bsb-card">
+          <h3>Traits This Person Should Know</h3>
+          <p class="bsb-case-sub">Pick a few traits, then jot a quick example for each. Not sure what to write? Use the assistant below.</p>
+          <div class="bsb-chip-row" id="c-chips"></div>
+          <div id="c-trait-notes"></div>
+        </div>
+
+        <div class="bsb-card">
+          <h3>Memories &amp; Notes</h3>
+          <div id="c-memories"></div>
+        </div>
+
+        <button class="bsb-btn" id="c-save">Save Case File</button>
+        <button class="bsb-btn ghost" id="c-review">Generate Brag Sheet →</button>
+      </div>
+    </div>`);
+    app.appendChild(wrap);
+
+    wrap.querySelector('#bsb-back').addEventListener('click', ()=>{ state.view='dashboard'; render(); });
+    wrap.querySelector('#c-name').addEventListener('input', e=> c.recommenderName = e.target.value);
+    wrap.querySelector('#c-subject').addEventListener('input', e=> c.subject = e.target.value);
+    wrap.querySelector('#c-relationship').addEventListener('change', e=> c.relationship = e.target.value);
+
+    // trait chips
+    const chipRow = wrap.querySelector('#c-chips');
+    const notesWrap = wrap.querySelector('#c-trait-notes');
+    function selectedTraitNames(){ return c.traits.map(t=>t.trait); }
+    function renderTraitNotes(){
+      notesWrap.innerHTML = '';
+      c.traits.forEach((t, i)=>{
+        const box = el(`<div class="bsb-field">
+          ${t.isCustom ? `<label>Custom trait name</label><input class="trait-name-input" value="${esc(t.trait==='Other'?'':t.trait)}" placeholder="Name this trait (e.g. Punctuality)" style="margin-bottom:8px;">` : ''}
+          <label>${t.isCustom ? 'Example or evidence' : t.trait + ' — example or evidence'}</label>
+          <textarea data-idx="${i}">${esc(t.note||'')}</textarea>
+          <div class="bsb-ai-row">
+            <button class="bsb-btn small ghost ai-suggest">Get Ideas</button>
+            <button class="bsb-btn small ghost ai-example">See an Example</button>
+            <button class="bsb-btn small ghost ai-feedback">Get Feedback</button>
+            <button class="bsb-btn small ghost ai-enhance">Enhance</button>
+            <button class="bsb-btn small ghost trait-remove">Remove Trait</button>
+          </div>
+          <div class="bsb-ai-panel" style="display:none"></div>
+        </div>`);
+        if (t.isCustom) {
+          box.querySelector('.trait-name-input').addEventListener('input', e=> t.trait = e.target.value);
+        }
+        box.querySelector('.trait-remove').addEventListener('click', ()=>{ c.traits.splice(i,1); renderChips(); renderTraitNotes(); });
+        const ta = box.querySelector('textarea');
+        ta.addEventListener('input', e=> t.note = e.target.value);
+        wireAiButtons(box, {
+          suggest: () => aiSuggestTrait(t.trait || 'this trait', c),
+          example: () => aiExampleTrait(t.trait || 'this trait', c),
+          feedback: () => aiFeedback(ta.value, `an example illustrating the trait "${t.trait || 'this trait'}" for a letter of recommendation`),
+          enhance: () => aiEnhance(ta.value, `example illustrating the trait "${t.trait || 'this trait'}", intended for ${c.recommenderName || 'the recommender'} (${c.relationship?.toLowerCase()||'teacher'})`, 500),
+          applyEnhance: (text) => { ta.value = text; t.note = text; }
+        });
+        notesWrap.appendChild(box);
+      });
+    }
+    function renderChips(){
+      chipRow.innerHTML = '';
+      TRAITS.forEach(name=>{
+        const isSel = selectedTraitNames().includes(name);
+        const chip = el(`<div class="bsb-chip ${isSel?'selected':''}">${name}</div>`);
+        chip.addEventListener('click', ()=>{
+          if (isSel) {
+            c.traits = c.traits.filter(t=>t.trait!==name);
+          } else {
+            c.traits.push({trait:name, note:''});
+          }
+          renderChips();
+          renderTraitNotes();
+        });
+        chipRow.appendChild(chip);
+      });
+      const otherChip = el(`<div class="bsb-chip">+ Other</div>`);
+      otherChip.addEventListener('click', ()=>{
+        c.traits.push({trait:'Other', note:'', isCustom:true});
+        renderChips();
+        renderTraitNotes();
+      });
+      chipRow.appendChild(otherChip);
+    }
+    renderChips();
+    renderTraitNotes();
+
+    // memories
+    const memWrap = wrap.querySelector('#c-memories');
+    c.memories.forEach((m, i)=>{
+      const box = el(`<div class="bsb-field">
+        <label>${m.prompt}</label>
+        <textarea data-idx="${i}">${esc(m.response||'')}</textarea>
+        <div class="bsb-ai-row">
+          <button class="bsb-btn small ghost ai-suggest">Get Ideas</button>
+          <button class="bsb-btn small ghost ai-example">See an Example</button>
+          <button class="bsb-btn small ghost ai-feedback">Get Feedback</button>
+          <button class="bsb-btn small ghost ai-enhance">Enhance</button>
+        </div>
+        <div class="bsb-ai-panel" style="display:none"></div>
+      </div>`);
+      const ta = box.querySelector('textarea');
+      ta.addEventListener('input', e=> m.response = e.target.value);
+      wireAiButtons(box, {
+        suggest: () => aiSuggestMemory(m.prompt, c),
+        example: () => aiExampleMemory(m.prompt, c),
+        feedback: () => aiFeedback(ta.value, `a personal anecdote answering: "${m.prompt}"`),
+        enhance: () => aiEnhance(ta.value, `personal anecdote answering "${m.prompt}", intended for ${c.recommenderName || 'the recommender'} (${c.relationship?.toLowerCase()||'teacher'})`),
+        applyEnhance: (text) => { ta.value = text; m.response = text; }
+      });
+      memWrap.appendChild(box);
+    });
+
+    function wireAiButtons(box, handlers){
+      const panel = box.querySelector('.bsb-ai-panel');
+      async function run(label, fn){
+        panel.style.display = 'block';
+        panel.innerHTML = `<span class="bsb-ai-label">${label}</span><span class="bsb-loading">Thinking…</span>`;
+        const text = await fn();
+        panel.innerHTML = `<span class="bsb-ai-label">${label}</span>${text}`;
+      }
+      box.querySelector('.ai-suggest').addEventListener('click', ()=> run('Ideas to get started', ()=>handlers.suggest()));
+      box.querySelector('.ai-example').addEventListener('click', ()=> run('Example Response', ()=>handlers.example()));
+      box.querySelector('.ai-feedback').addEventListener('click', ()=> run('Assistant Feedback', ()=>handlers.feedback()));
+      if (handlers.enhance) {
+        box.querySelector('.ai-enhance').addEventListener('click', attachEnhance(panel, handlers.enhance, handlers.applyEnhance));
+      }
+    }
+
+    wrap.querySelector('#c-save').addEventListener('click', async ()=>{
+      await saveCase(c);
+      toast("Case File saved.");
+    });
+    wrap.querySelector('#c-review').addEventListener('click', async ()=>{
+      await saveCase(c);
+      state.view = 'review';
+      render();
+    });
+  }
+
+  function aiEnhance(text, context, maxChars){
+    const sys = "You are an expert college advisor and writing coach. Your job is to genuinely IMPROVE brag sheet notes for their intended reader — not shorten or condense them. Add vivid, concrete, specific detail; sharpen weak language; make the writing richer and more comprehensive and compelling. It is fine and often desirable for the rewritten version to be LONGER than the original. Stay strictly truthful to the details already given — never invent facts, achievements, or specifics that weren't implied by the original, but do flesh out and elaborate on what's there. CRITICAL: match the student's own voice and tone from the original text — their word choices, sentence rhythm, level of formality. Write like a real teenager describing their own life, not like a corporate bio or a college essay generated by AI. Avoid stock phrases like 'passionate about', 'played a pivotal role', 'honed my skills', 'fostered', 'embarked', em-dashes used for dramatic effect, or any language that sounds polished-to-the-point-of-generic. Plain, specific, and a little rough around the edges beats smooth and vague.";
+    const limitInstruction = maxChars ? ` Use up to ${maxChars} characters — use that space to add real depth and detail rather than trimming anything down.` : "";
+    const usr = (text && text.trim())
+      ? `Enhance the following ${context}. Do NOT simply shorten, condense, or summarize it — genuinely enrich it with more specific, vivid detail and more comprehensive coverage of what makes it compelling, while staying grounded in the facts already present and sounding like the student actually wrote it, not like an AI or admissions-brochure voice.${limitInstruction} Return ONLY the rewritten text, no preamble, no notes, no quotation marks around it.\n\nOriginal:\n${text}`
+      : "There's nothing written yet to enhance. Return one short encouraging sentence telling the student to write a first draft, then they can enhance it.";
+    return askClaude(sys, usr).then(result => {
+      if (maxChars && result.length > maxChars) {
+        const cut = result.slice(0, maxChars);
+        const lastSpace = cut.lastIndexOf(' ');
+        return (lastSpace > maxChars * 0.6 ? cut.slice(0, lastSpace) : cut).trim() + '…';
+      }
+      return result;
+    });
+  }
+
+  function attachEnhance(panel, getEnhanced, applyFn){
+    return async () => {
+      panel.style.display = 'block';
+      panel.innerHTML = `<span class="bsb-ai-label">Enhanced Version</span><span class="bsb-loading">Enhancing…</span>`;
+      const text = await getEnhanced();
+      panel.innerHTML = `<span class="bsb-ai-label">Enhanced Version</span><div>${text}</div><div class="bsb-ai-row" style="margin-top:8px;"><button class="bsb-btn small enhance-apply">Use This Version</button></div>`;
+      panel.querySelector('.enhance-apply').addEventListener('click', ()=>{
+        applyFn(text);
+        toast("Enhanced version applied.");
+      });
+    };
+  }
+
+  function studentContextSummary(){
+    const p = state.profile || {};
+    const acts = (p.activities||[]).filter(a=>a.name).map(a=> a.name + (a.type? ' ('+a.type+')':'')).join('; ');
+    const honors = (p.honors||[]).filter(h=>h.name).map(h=>h.name).join('; ');
+    const major = p.major ? `Intended major: ${p.major}.` : '';
+    return `${acts? 'Student\'s activities: '+acts+'.' : ''} ${honors? 'Honors: '+honors+'.' : ''} ${major}`.trim();
+  }
+
+  function aiSuggestTrait(trait, c){
+    const sys = "You are a warm, practical writing coach helping a student prepare notes for a letter-of-recommendation brag sheet. Keep responses short, concrete, and easy to scan. Ground your suggestions in the specific real details you're given about the student rather than generic advice.";
+    const ctx = studentContextSummary();
+    const usr = `The student wants to give their recommender (a ${c.relationship?.toLowerCase()||'teacher'} for ${c.subject||'a class'}) a quick example showing the trait "${trait}". ${ctx ? 'Relevant context about this student: ' + ctx : ''} Give 4 short, concrete prompting questions or angles — referencing their actual activities/class context above where relevant — to help them think of a specific real moment (not a generic list of trait definitions). Format as a short bulleted list.`;
+    return askClaude(sys, usr);
+  }
+  function aiExampleTrait(trait, c){
+    const sys = "You are a writing coach. Write a brief, realistic example a student MIGHT write, for inspiration only — clearly not about them, just a model of tone and specificity.";
+    const ctx = studentContextSummary();
+    const usr = `Write one short example (3-4 sentences) of the kind of specific, concrete note a student could write to illustrate the trait "${trait}" for a recommender who is their ${c.relationship?.toLowerCase()||'teacher'}${c.subject? ' ('+c.subject+')':''}. ${ctx ? 'For flavor, this student is involved in: ' + ctx : ''} Make it vivid and specific rather than generic. Prefix it with "Example (for inspiration only):"`;
+    return askClaude(sys, usr);
+  }
+  function aiSuggestMemory(prompt, c){
+    const sys = "You are a warm, practical writing coach helping a student prepare notes for a letter-of-recommendation brag sheet. Keep responses short and concrete. Ground your suggestions in the specific real details you're given about the student rather than generic advice.";
+    const ctx = studentContextSummary();
+    const usr = `The student needs to answer this prompt for their ${c.relationship?.toLowerCase()||'teacher'} (${c.subject||'class'}): "${prompt}". ${ctx ? 'Relevant context about this student: ' + ctx : ''} Give 4 short questions — referencing their actual activities/class context above where relevant — to help jog their memory toward a specific real moment. Bulleted list, no preamble.`;
+    return askClaude(sys, usr);
+  }
+  function aiExampleMemory(prompt, c){
+    const sys = "You are a writing coach. Write a brief, realistic example response for inspiration only.";
+    const usr = `Write one short example (3-5 sentences) of a strong, specific answer to this prompt: "${prompt}". Context: it's for a ${c.relationship?.toLowerCase()||'teacher'}${c.subject? ' ('+c.subject+')':''}. Prefix it with "Example (for inspiration only):"`;
+    return askClaude(sys, usr);
+  }
+  function aiSuggestChallenge(){
+    const sys = "You are a warm, practical writing coach helping a student prepare notes for a college/scholarship brag sheet. Keep responses short and concrete. Ground your suggestions in the specific real details you're given about the student rather than generic advice.";
+    const ctx = studentContextSummary();
+    const usr = `The student needs to describe an obstacle or challenge they've faced and how they handled it. ${ctx ? 'Relevant context about this student: ' + ctx : ''} Give 4 short questions — referencing their actual activities/major above where relevant — to help them think of a specific real example (academic, personal, family, health, financial, etc). Bulleted list, no preamble.`;
+    return askClaude(sys, usr);
+  }
+  function aiExampleChallenge(){
+    const sys = "You are a writing coach. Write a brief, realistic example response for inspiration only — not about any real person.";
+    const usr = `Write one short example (4-6 sentences) of a strong, specific answer describing an obstacle/challenge a student faced and how they grew from or handled it. Prefix it with "Example (for inspiration only):"`;
+    return askClaude(sys, usr);
+  }
+  function aiFeedback(text, context){
+    const sys = "You are an encouraging but honest writing coach reviewing brag-sheet notes for letters of recommendation. Be specific and brief.";
+    const usr = text && text.trim() ? `Give brief, constructive feedback (3-4 sentences max) on this draft, which is ${context}:\n\n"${text}"\n\nPoint out what's working and one concrete way to make it more specific or vivid.` : "The student hasn't written anything yet — gently prompt them to start with one concrete detail, in 1-2 sentences.";
+    return askClaude(sys, usr);
+  }
+
+  /* ---------------- REVIEW / FINAL DOC ---------------- */
+  function renderReview(){
+    const p = state.profile || {};
+    const c = state.activeCase;
+    const activities = (p.activities||[]).filter(a=>a.name);
+
+    function buildDocHtml(){
+      return `
+      <div class="bsb-doc-name">${p.name || 'Student Name'}</div>
+      <div class="bsb-mono" style="color:var(--ink-soft);font-size:13px;margin-top:2px;">
+        ${p.school||''} · Class of ${p.gradYear||''} ${p.email? ' · '+p.email:''}
+      </div>
+
+      <h2>Prepared for ${c.recommenderName || 'Recommender'}${c.subject? ' — '+c.subject:''}</h2>
+
+      <h2>Academic Snapshot</h2>
+      <ul>
+        ${p.gpaUnweighted? `<li>GPA (Unweighted): ${p.gpaUnweighted}</li>`:''}
+        ${p.gpaWeighted? `<li>GPA (Weighted): ${p.gpaWeighted}</li>`:''}
+        ${p.satScore? `<li>SAT Score: ${p.satScore}</li>`:''}
+        ${p.actScore? `<li>ACT Score: ${p.actScore}</li>`:''}
+        ${p.major? `<li>Intended Major(s): ${p.major}</li>`:''}
+      </ul>
+
+      <h2>Application Deadlines</h2>
+      <ul>
+        ${(p.deadlines||[]).filter(dl=>dl.college).length ? p.deadlines.filter(dl=>dl.college).map(dl=>`<li><strong>${dl.college}</strong> — ${dl.type||'Deadline'}${dl.date? ': '+dl.date:''}</li>`).join('') : '<li>No deadlines listed.</li>'}
+      </ul>
+
+      <h2>Activities &amp; Involvement</h2>
+      <ul>
+        ${activities.length? activities.map(a=>`<li><strong>${a.name}</strong>${a.type? ' — '+a.type:''}${a.role? ' · '+a.role:''}${a.years? ' ('+a.years+')':''}${a.hoursPerWeek? ', '+a.hoursPerWeek+' hrs/wk':''}${a.description? '<br>'+a.description:''}</li>`).join('') : '<li>No activities listed.</li>'}
+      </ul>
+
+      <h2>Honors, Recognitions &amp; Certificates</h2>
+      <ul>
+        ${(p.honors||[]).filter(h=>h.name).length ? p.honors.filter(h=>h.name).map(h=>`<li><strong>${h.name}</strong>${h.description? '<br>'+h.description:''}</li>`).join('') : '<li>None listed.</li>'}
+      </ul>
+
+      <h2>Obstacles &amp; Challenges</h2>
+      ${(p.challenges||[]).filter(ch=>ch.description).length ? p.challenges.filter(ch=>ch.description).map(ch=>`<p>${ch.description}</p>`).join('') : '<p class="bsb-empty">None listed.</p>'}
+
+      <h2>Traits &amp; Examples</h2>
+      <ul>
+        ${(c.traits||[]).filter(t=>t.note).length ? c.traits.filter(t=>t.note).map(t=>`<li><strong>${t.trait}:</strong> ${t.note}</li>`).join('') : '<li>No trait examples added yet.</li>'}
+      </ul>
+
+      <h2>Memories &amp; Notes</h2>
+      ${(c.memories||[]).filter(m=>m.response).length ? c.memories.filter(m=>m.response).map(m=>`<p><em>${m.prompt}</em><br>${m.response}</p>`).join('') : '<p class="bsb-empty">No memories added yet.</p>'}
+    `;
+    }
+
+    const initialHtml = c.editedDoc || buildDocHtml();
+
+    const wrap = el(`<div>
+      <div class="bsb-topnav">
+        <div class="bsb-back" id="bsb-back">← Back to Case File</div>
+      </div>
+      <p class="bsb-case-sub" style="margin-bottom:10px;">Click into the document below to edit it directly — fix wording, trim it down, or rearrange before you save or export.</p>
+      <div class="bsb-doc">
+        <div id="bsb-doc-content" contenteditable="true" style="outline:none; border:1px dashed var(--brass); border-radius:4px; padding:14px;">${initialHtml}</div>
+        <div class="bsb-doc-actions">
+          <button class="bsb-btn" id="r-save-edits">Save Edits</button>
+          <button class="bsb-btn ghost" id="r-regenerate">Regenerate from Data</button>
+          <button class="bsb-btn" id="r-export-doc">Export as Word Doc</button>
+          <button class="bsb-btn ghost" id="r-copy">Copy as Text</button>
+          <button class="bsb-btn ghost" id="r-print">Print / Save as PDF</button>
+          <button class="bsb-stamp-btn" id="r-done">✓ Final</button>
+        </div>
+      </div>
+    </div>`);
+    app.appendChild(wrap);
+
+    const docContent = wrap.querySelector('#bsb-doc-content');
+
+    wrap.querySelector('#bsb-back').addEventListener('click', ()=>{ state.view='case'; render(); });
+    wrap.querySelector('#r-print').addEventListener('click', ()=> window.print());
+    wrap.querySelector('#r-copy').addEventListener('click', async ()=>{
+      const plain = docContent.innerText;
+      try { await navigator.clipboard.writeText(plain); toast("Copied to clipboard."); }
+      catch(e){ toast("Couldn't copy automatically — select and copy manually."); }
+    });
+    wrap.querySelector('#r-save-edits').addEventListener('click', async ()=>{
+      c.editedDoc = docContent.innerHTML;
+      await saveCase(c);
+      toast("Edits saved.");
+    });
+    wrap.querySelector('#r-regenerate').addEventListener('click', async ()=>{
+      docContent.innerHTML = buildDocHtml();
+      c.editedDoc = null;
+      await saveCase(c);
+      toast("Regenerated from your saved data.");
+    });
+    wrap.querySelector('#r-export-doc').addEventListener('click', ()=>{
+      const title = `Brag Sheet - ${p.name || 'Student'} for ${c.recommenderName || 'Recommender'}`;
+      const wordHtml = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta charset="utf-8"><title>${title}</title>
+        <style>
+          body { font-family: Georgia, 'Times New Roman', serif; font-size: 12pt; color: #23301C; }
+          h2 { font-family: Georgia, serif; font-size: 14pt; border-bottom: 1px solid #23301C; padding-bottom: 4px; margin-top: 20px; }
+          .bsb-doc-name { font-size: 18pt; font-weight: bold; }
+          ul { margin: 6px 0; padding-left: 22px; }
+        </style></head>
+        <body>${docContent.innerHTML}</body>
+      </html>`;
+      const blob = new Blob(['\ufeff', wordHtml], { type: 'application/msword' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${(c.recommenderName || 'brag-sheet').replace(/[^a-z0-9]+/gi,'-')}.doc`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      toast("Word document downloaded.");
+    });
+    wrap.querySelector('#r-done').addEventListener('click', async ()=>{
+      c.editedDoc = docContent.innerHTML;
+      c.generatedAt = new Date().toISOString();
+      await saveCase(c);
+      toast("Marked ready to send!");
+      state.view = 'dashboard';
+      render();
+    });
+  }
+
+  loadAll().catch((e)=>{
+    app.innerHTML = `<div class="bsb-card"><h3>Couldn't Open the Filing Cabinet</h3><p>${esc(e && e.message ? e.message : String(e))}</p><p class="bsb-case-sub">Try refreshing. If this keeps happening, your browser may be blocking storage for this page.</p></div>`;
+  });
+})();
+</script>
